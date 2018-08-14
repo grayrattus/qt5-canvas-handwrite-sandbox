@@ -1,6 +1,8 @@
 #include "WriteWidget.h"
 #include "ui_WriteWidget.h"
 
+#include <QDebug>
+
 
 WriteWidget::WriteWidget(QWidget *parent, QWidget *sibling) :
     QWidget(parent),
@@ -8,6 +10,7 @@ WriteWidget::WriteWidget(QWidget *parent, QWidget *sibling) :
 {
     setAttribute(Qt::WA_StaticContents);
     ui->setupUi(this);
+    this->resize(parent->size().width(), maxDrawAreaHeight);
     modified = false;
     scribbling = false;
     clearImage();
@@ -76,7 +79,7 @@ void WriteWidget::drawLineTo(const QPoint &endPoint)
 
 QImage *WriteWidget::clearImage()
 {
-    image = new QImage(QSize(this->size().width(), 100), QImage::Format_RGB32);
-    image->fill(QColor(255,255,255,0));
+    image = new QImage(QSize(this->size().width(), maxDrawAreaHeight), QImage::Format_ARGB32);
+    image->fill(qRgba(255,255,255,100));
     update();
 }

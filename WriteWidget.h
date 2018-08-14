@@ -36,7 +36,8 @@ private:
     bool scribbling;
     QImage* image;
     QPoint lastPoint;
-    uint milisecondsToDrawAfterBrake = 2000;
+    const uint milisecondsToDrawAfterBrake = 2000;
+    const uint maxDrawAreaHeight = 100;
     QTimer* timeToDraw;
 
     QImage* clearImage();

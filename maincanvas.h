@@ -24,7 +24,7 @@ public:
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
-
+    int getFirstPixel(QImage image);
 public slots:
     void addWord(QImage*);
 
@@ -34,6 +34,7 @@ private:
     Ui::MainCanvas *ui;
     QImage* mainCanvasImage;
     std::vector<QImage*> words;
+    std::vector<QImage> croppedWords;
     bool modified;
     bool scribbling;
     QImage* image;

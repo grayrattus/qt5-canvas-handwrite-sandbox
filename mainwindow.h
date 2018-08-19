@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPaintEvent>
 #include <WriteWidget.h>
+#include <PenOptions.h>
 #include <maincanvas.h>
 #include <vector>
 
@@ -24,6 +25,7 @@ private:
     Ui::MainWindow *ui;
     WriteWidget* writeWidget;
     MainCanvas* mainCanvas;
+    PenOptions* penOptions;
 };
 
 #endif // MAINWINDOW_H

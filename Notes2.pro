@@ -27,14 +27,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     WriteWidget.cpp \
-    maincanvas.cpp
+    maincanvas.cpp \
+    PenOptions.cpp
 
 HEADERS += \
         mainwindow.h \
     WriteWidget.h \
-    maincanvas.h
+    maincanvas.h \
+    PenOptions.h
 
 FORMS += \
         mainwindow.ui \
     WriteWidget.ui \
-    maincanvas.ui
+    maincanvas.ui \
+    PenOptions.ui

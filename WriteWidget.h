@@ -26,9 +26,11 @@ public:
     void paintEvent(QPaintEvent *event) override;
 signals:
     void finishWord(QImage*);
+    void emitColorChange(const QColor&);
 public slots:
     void finishWriting();
-
+    void resizePen(const int newPenSize);
+    void changePenColor(bool clicked);
 private:
     Ui::WriteWidget *ui;
     void drawLineTo(const QPoint &endPoint);
@@ -36,6 +38,8 @@ private:
     bool scribbling;
     QImage* image;
     QPoint lastPoint;
+    int penSize = 5;
+    QColor penColor = Qt::black;
     const uint milisecondsToDrawAfterBrake = 2000;
     const uint maxDrawAreaHeight = 100;
     QTimer* timeToDraw;

@@ -93,7 +93,7 @@ int MainCanvas::getFarestPixel(QImage image) {
     int farestPixel = 0;
     for (int heigh = 1; heigh < imageHeight; heigh++ ) {
         for (int width = 1; width < imageWight; width++ ) {
-            if (image.pixelColor(width, heigh) == QColor(0,0,0,255) && width > farestPixel) {
+            if (image.pixelColor(width, heigh) != QColor(255,255,255,100) && width > farestPixel) {
                farestPixel = width;
             }
         }
@@ -107,7 +107,7 @@ int MainCanvas::getFirstPixel(QImage image) {
     int firstPixel = 0;
     for (int heigh = 1; heigh < imageHeight; heigh++ ) {
         for (int width = 1; width < imageWight; width++ ) {
-            if (image.pixelColor(width, heigh) == QColor(0,0,0) && width < firstPixel) {
+            if (image.pixelColor(width, heigh) != QColor(255,255,255) && width < firstPixel) {
                firstPixel = width;
             }
         }

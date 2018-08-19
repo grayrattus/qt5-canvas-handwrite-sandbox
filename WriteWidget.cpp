@@ -1,7 +1,9 @@
+#include "PenOptions.h"
 #include "WriteWidget.h"
 #include "ui_WriteWidget.h"
 
 #include <QDebug>
+#include <QColorDialog>
 
 
 WriteWidget::WriteWidget(QWidget *parent, QWidget *sibling) :
@@ -69,9 +71,10 @@ void WriteWidget::finishWriting()
 void WriteWidget::drawLineTo(const QPoint &endPoint)
 {
    QPainter painter(image);
+   painter.setPen(QPen(penColor, penSize, Qt::SolidLine, Qt::RoundCap,
+                             Qt::RoundJoin));
    painter.drawLine(lastPoint, endPoint);
    modified = true;
-
    int rad = 5;
    update(QRect(lastPoint, endPoint).normalized().adjusted(-rad, -rad, +rad, +rad));
    lastPoint = endPoint;
@@ -82,4 +85,19 @@ QImage *WriteWidget::clearImage()
     image = new QImage(QSize(this->size().width(), maxDrawAreaHeight), QImage::Format_ARGB32);
     image->fill(qRgba(255,255,255,100));
     update();
+}
+
+void WriteWidget::resizePen(const int newPenSize)
+{
+    qDebug() << "Wchodzi " << newPenSize;
+    penSize = newPenSize;
+}
+
+void WriteWidget::changePenColor(bool clicked)
+{
+    QColor color = QColorDialog::getColor(penColor, this);
+    if (color.isValid()) {
+        penColor = color;
+        emit emitColorChange(penColor);
+    }
 }

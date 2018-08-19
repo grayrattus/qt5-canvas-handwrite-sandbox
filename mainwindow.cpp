@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     mainCanvas = new MainCanvas(this);
     writeWidget = new WriteWidget(this, mainCanvas);
+    penOptions = new PenOptions(this, writeWidget);
+    ui->toolsLayout->addWidget(penOptions);
     ui->imagesLayout->addWidget(writeWidget);
     ui->wordsLayout->addWidget(mainCanvas);
     writeWidget->show();

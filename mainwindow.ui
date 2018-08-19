@@ -19,6 +19,9 @@
      <layout class="QGridLayout" name="wordsLayout"/>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="toolsLayout"/>
+    </item>
+    <item>
      <layout class="QVBoxLayout" name="imagesLayout"/>
     </item>
    </layout>
